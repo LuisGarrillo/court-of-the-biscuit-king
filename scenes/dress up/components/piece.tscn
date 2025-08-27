@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhobab1e5aiv3"]
+
+[ext_resource type="Script" uid="uid://nx0w0s2dj7es" path="res://scripts/dress up/components/piece.gd" id="1_71pr8"]
+
+[node name="Piece" type="Node2D"]
+script = ExtResource("1_71pr8")
