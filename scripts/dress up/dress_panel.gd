@@ -2,6 +2,7 @@ extends Node2D
 class_name DressPanel
 @onready var buttons: Node2D = $buttons
 @onready var pieces: Node2D = $Pieces
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var current_flavor : String = "sweet"
 
@@ -16,8 +17,11 @@ func _ready() -> void:
 
 func change_flavor(new_flavor):
 	current_flavor = new_flavor
-	update_pieces()
+	animation_player.play("hide")
 
+func update_and_show():
+	update_pieces()
+	animation_player.play("show")
 
 func update_pieces():
 	for piece : Piece in pieces.get_children():
