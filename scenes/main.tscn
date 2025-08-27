@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://be5711tc6amm1"]
+[gd_scene load_steps=3 format=3 uid="uid://be5711tc6amm1"]
+
+[ext_resource type="Script" uid="uid://bhu1j3y8p3rru" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dve0byr04xi38" path="res://scenes/dress up/dress_up.tscn" id="1_o5qli"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_0wfyh")
+
+[node name="DressUp" parent="." instance=ExtResource("1_o5qli")]
+scale = Vector2(6, 6)
