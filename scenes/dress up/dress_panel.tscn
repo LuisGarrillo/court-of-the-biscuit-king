@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://csa7vl85qq6ty"]
+
+[ext_resource type="Script" uid="uid://cmxnm6wcpp1hd" path="res://scripts/dress up/dress_panel.gd" id="1_b1s2w"]
+[ext_resource type="PackedScene" uid="uid://o4txuljx08kp" path="res://scenes/dress up/components/flavor_button.tscn" id="1_rjvf5"]
+[ext_resource type="PackedScene" uid="uid://dhobab1e5aiv3" path="res://scenes/dress up/components/piece.tscn" id="3_lan05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lan05"]
+size = Vector2(64, 40)
+
+[node name="DressPanel" type="Node2D"]
+script = ExtResource("1_b1s2w")
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="SweetButton" parent="buttons" instance=ExtResource("1_rjvf5")]
+flavor = "sweet"
+
+[node name="SaltyButton" parent="buttons" instance=ExtResource("1_rjvf5")]
+position = Vector2(18, 0)
+flavor = "salty"
+
+[node name="BitterButton" parent="buttons" instance=ExtResource("1_rjvf5")]
+position = Vector2(36, 0)
+flavor = "bitter"
+
+[node name="AcidButton" parent="buttons" instance=ExtResource("1_rjvf5")]
+position = Vector2(54, 0)
+flavor = "acid"
+
+[node name="Pieces" type="Node2D" parent="."]
+
+[node name="Piece" parent="Pieces" node_paths=PackedStringArray("sprite", "area") instance=ExtResource("3_lan05")]
+position = Vector2(3, 20)
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+type = "upper"
+
+[node name="Sprite2D" type="Sprite2D" parent="Pieces/Piece"]
+centered = false
+
+[node name="Area2D" type="Area2D" parent="Pieces/Piece"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pieces/Piece/Area2D"]
+position = Vector2(32, 20)
+shape = SubResource("RectangleShape2D_lan05")
+
+[node name="Piece2" parent="Pieces" node_paths=PackedStringArray("sprite", "area") instance=ExtResource("3_lan05")]
+position = Vector2(3, 61)
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+type = "main"
+
+[node name="Sprite2D" type="Sprite2D" parent="Pieces/Piece2"]
+centered = false
+
+[node name="Area2D" type="Area2D" parent="Pieces/Piece2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pieces/Piece2/Area2D"]
+position = Vector2(32, 20)
+shape = SubResource("RectangleShape2D_lan05")
+
+[node name="Piece3" parent="Pieces" node_paths=PackedStringArray("sprite", "area") instance=ExtResource("3_lan05")]
+position = Vector2(3, 102)
+sprite = NodePath("Sprite2D")
+area = NodePath("Area2D")
+type = "lower"
+
+[node name="Sprite2D" type="Sprite2D" parent="Pieces/Piece3"]
+centered = false
+
+[node name="Area2D" type="Area2D" parent="Pieces/Piece3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pieces/Piece3/Area2D"]
+position = Vector2(32, 20)
+shape = SubResource("RectangleShape2D_lan05")
