@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://drfekaeqejavn"]
+
+[ext_resource type="Script" uid="uid://cjs13mddmyy6f" path="res://scripts/dress up/components/stat.gd" id="1_iqy8m"]
+[ext_resource type="Texture2D" uid="uid://bcv3ta018v5w7" path="res://assets/sprites/clothing panel/button.png" id="2_m88pa"]
+[ext_resource type="LabelSettings" uid="uid://8if0ejpj3shh" path="res://assets/fonts/Riddle.tres" id="3_38hbe"]
+
+[node name="Stat" type="Node2D"]
+script = ExtResource("1_iqy8m")
+
+[node name="icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_m88pa")
+centered = false
+
+[node name="status" type="Label" parent="."]
+offset_left = 18.0
+offset_right = 58.0
+offset_bottom = 23.0
+text = "Nothing yet"
+label_settings = ExtResource("3_38hbe")
