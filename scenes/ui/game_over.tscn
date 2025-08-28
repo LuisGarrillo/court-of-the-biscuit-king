@@ -1,0 +1,183 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxmw7woky7jeh"]
+
+[ext_resource type="Script" uid="uid://cyre0xl3adolx" path="res://scripts/ui/game_over.gd" id="1_fn8we"]
+[ext_resource type="LabelSettings" uid="uid://8if0ejpj3shh" path="res://assets/fonts/Riddle.tres" id="1_g6ek7"]
+[ext_resource type="PackedScene" uid="uid://c3t647y0tvqf2" path="res://scenes/ui/components/button.tscn" id="2_dcnrx"]
+[ext_resource type="FontFile" uid="uid://8x1mosnm5x6m" path="res://assets/fonts/monogram-extended.ttf" id="3_fn8we"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2tf5n"]
+font = ExtResource("3_fn8we")
+font_color = Color(0, 0, 0.188235, 1)
+
+[sub_resource type="Animation" id="Animation_fn8we"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"toggle"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2tf5n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vfrx6"]
+resource_name = "out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"toggle"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"retyr_emit"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xak67"]
+_data = {
+&"RESET": SubResource("Animation_2tf5n"),
+&"in": SubResource("Animation_fn8we"),
+&"out": SubResource("Animation_vfrx6")
+}
+
+[node name="GameOver" type="Node2D"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_fn8we")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 78.0
+offset_right = 320.0
+offset_bottom = 101.0
+text = "It's tea time for you..."
+label_settings = ExtResource("1_g6ek7")
+horizontal_alignment = 1
+
+[node name="Retry" parent="." instance=ExtResource("2_dcnrx")]
+position = Vector2(70, 100)
+
+[node name="Label" type="Label" parent="Retry"]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 63.0
+offset_bottom = 27.0
+text = "Try again!"
+label_settings = SubResource("LabelSettings_2tf5n")
+
+[node name="Quit" parent="." instance=ExtResource("2_dcnrx")]
+position = Vector2(168, 100)
+
+[node name="Label" type="Label" parent="Quit"]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 63.0
+offset_bottom = 27.0
+text = "Give up..."
+label_settings = SubResource("LabelSettings_2tf5n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xak67")
+}
+
+[connection signal="clicked" from="Retry" to="." method="_on_retry_clicked"]
+[connection signal="clicked" from="Quit" to="." method="_on_quit_clicked"]
