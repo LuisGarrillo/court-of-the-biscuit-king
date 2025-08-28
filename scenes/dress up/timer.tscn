@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://wss6cku3cngp"]
+
+[ext_resource type="Script" uid="uid://cdh4dgrfqs70a" path="res://scripts/dress up/timer.gd" id="1_wm0mp"]
+[ext_resource type="LabelSettings" uid="uid://8if0ejpj3shh" path="res://assets/fonts/Riddle.tres" id="2_oi10o"]
+
+[node name="Timer" type="Node2D"]
+script = ExtResource("1_wm0mp")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = ExtResource("2_oi10o")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
