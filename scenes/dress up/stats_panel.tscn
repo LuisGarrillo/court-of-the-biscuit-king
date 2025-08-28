@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbfs5o3audktb"]
+
+[ext_resource type="Script" uid="uid://w2jpym5w7cqa" path="res://scripts/dress up/stats_panel.gd" id="1_3ephd"]
+[ext_resource type="PackedScene" uid="uid://drfekaeqejavn" path="res://scenes/dress up/components/stat.tscn" id="1_imc0p"]
+
+[node name="StatsPanel" type="Node2D"]
+script = ExtResource("1_3ephd")
+
+[node name="Sweet" parent="." instance=ExtResource("1_imc0p")]
+
+[node name="Salty" parent="." instance=ExtResource("1_imc0p")]
+position = Vector2(0, 18)
+
+[node name="Bitter" parent="." instance=ExtResource("1_imc0p")]
+position = Vector2(0, 36)
+
+[node name="Acid" parent="." instance=ExtResource("1_imc0p")]
+position = Vector2(0, 54)
