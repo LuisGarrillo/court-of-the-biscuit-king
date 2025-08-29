@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dve0byr04xi38"]
+[gd_scene load_steps=19 format=3 uid="uid://dve0byr04xi38"]
 
 [ext_resource type="Script" uid="uid://ctj511is7knnv" path="res://scripts/dress up/dress_up.gd" id="1_4nuxb"]
 [ext_resource type="PackedScene" uid="uid://c8rfrygk37wvo" path="res://scenes/dress up/dessert.tscn" id="1_syard"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://wss6cku3cngp" path="res://scenes/dress up/timer.tscn" id="4_h2iqy"]
 [ext_resource type="LabelSettings" uid="uid://8if0ejpj3shh" path="res://assets/fonts/Riddle.tres" id="4_xeinm"]
 [ext_resource type="PackedScene" uid="uid://cbfs5o3audktb" path="res://scenes/dress up/stats_panel.tscn" id="5_nf5kc"]
+[ext_resource type="PackedScene" uid="uid://c3t647y0tvqf2" path="res://scenes/ui/components/button.tscn" id="6_2geyb"]
+[ext_resource type="FontFile" uid="uid://8x1mosnm5x6m" path="res://assets/fonts/monogram-extended.ttf" id="7_kjqeq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_70c5o"]
+font = ExtResource("7_kjqeq")
+font_color = Color(0, 0, 0.188235, 1)
 
 [sub_resource type="Animation" id="Animation_xeinm"]
 length = 2.0
@@ -81,6 +87,24 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(325, 40)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Finish:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(325, 132)]
+}
+
+[sub_resource type="Animation" id="Animation_2geyb"]
+resource_name = "finish game"
+
+[sub_resource type="Animation" id="Animation_nf5kc"]
+resource_name = "game over"
 
 [sub_resource type="Animation" id="Animation_eyiml"]
 resource_name = "in"
@@ -95,7 +119,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(120, 170), Vector2(120, 40)]
+"values": [Vector2(120, 180), Vector2(120, 40)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -147,6 +171,21 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(325, 40), Vector2(215, 40)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Finish:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(325, 132), Vector2(232, 132)]
+}
+
+[sub_resource type="Animation" id="Animation_57oh0"]
+resource_name = "next round"
 
 [sub_resource type="Animation" id="Animation_h2iqy"]
 resource_name = "riddle in"
@@ -214,15 +253,6 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_nf5kc"]
-resource_name = "game over"
-
-[sub_resource type="Animation" id="Animation_57oh0"]
-resource_name = "next round"
-
-[sub_resource type="Animation" id="Animation_2geyb"]
-resource_name = "finish game"
-
 [sub_resource type="Animation" id="Animation_kjqeq"]
 resource_name = "time out"
 length = 0.5
@@ -236,7 +266,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(120, 40), Vector2(120, 170)]
+"values": [Vector2(120, 40), Vector2(120, 180)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -300,6 +330,94 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(84, 8), Vector2(84, -26)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Finish:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(232, 132), Vector2(325, 132)]
+}
+
+[sub_resource type="Animation" id="Animation_70c5o"]
+resource_name = "judge in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DressPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 7), Vector2(-72, 7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Timer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(280, 8), Vector2(325, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StatsPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(215, 40), Vector2(325, 40)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Riddle:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(84, 8), Vector2(84, -26)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Finish:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(232, 132), Vector2(325, 132)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dessert:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(120, 40), Vector2(48, 40)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h2iqy"]
 _data = {
@@ -307,6 +425,7 @@ _data = {
 &"finish game": SubResource("Animation_2geyb"),
 &"game over": SubResource("Animation_nf5kc"),
 &"in": SubResource("Animation_eyiml"),
+&"judge in": SubResource("Animation_70c5o"),
 &"next round": SubResource("Animation_57oh0"),
 &"riddle in": SubResource("Animation_h2iqy"),
 &"time out": SubResource("Animation_kjqeq")
@@ -327,6 +446,18 @@ position = Vector2(325, 8)
 [node name="StatsPanel" parent="." instance=ExtResource("5_nf5kc")]
 position = Vector2(325, 40)
 
+[node name="Finish" parent="." instance=ExtResource("6_2geyb")]
+position = Vector2(325, 132)
+
+[node name="Label" type="Label" parent="Finish"]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 63.0
+offset_bottom = 27.0
+text = "Finish!"
+label_settings = SubResource("LabelSettings_70c5o")
+horizontal_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_h2iqy")
@@ -334,9 +465,9 @@ libraries = {
 
 [node name="Command" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 84.0
+offset_left = 103.0
 offset_top = 71.0
-offset_right = 243.0
+offset_right = 262.0
 offset_bottom = 100.0
 text = "The Biscuit commands:
 "
@@ -345,12 +476,13 @@ horizontal_alignment = 1
 
 [node name="Riddle" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 84.0
-offset_top = -26.0
-offset_right = 243.0
-offset_bottom = -3.0
+offset_left = 103.0
+offset_top = 87.0
+offset_right = 262.0
+offset_bottom = 110.0
 text = "hace una verguita ahi"
 label_settings = ExtResource("4_xeinm")
 horizontal_alignment = 1
 
 [connection signal="time_out" from="Timer" to="." method="_on_timer_time_out"]
+[connection signal="clicked" from="Finish" to="." method="_on_finish_clicked"]

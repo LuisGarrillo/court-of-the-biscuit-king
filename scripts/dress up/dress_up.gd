@@ -10,7 +10,7 @@ class_name DressUp
 
 var level = 0
 var riddles = ["A sweet entrance", "A very salty dish", "A more bitter than sweet memory", "Don't fotget to serve my fish with lemon slices!"]
-var times = [1, 90, 90, 60]
+var times = [120, 90, 90, 60]
 var targets = [
 	{
 		"sweet": 3,
@@ -44,8 +44,11 @@ var piece_weights = {
 	"lower": 1
 }
 
+var approved
+
 signal game_over
 signal next_round
+signal judge_in
 
 func _ready() -> void:
 	dress_panel.add_piece.connect(add_piece)
@@ -88,11 +91,9 @@ func evaluate(proposal: Dictionary):
 	var proposal_stat = load_stat(proposal)
 	
 	for key in proposal_stat.keys():
-		if proposal_stat[key] < targets[key]:
-			animation_player.play("game over")
-			return
-	level += 1
-	check_next()
+		if proposal_stat[key] < targets[level][key]:
+			return false
+	return true
 
 func check_next():
 	if level < 4:
@@ -105,3 +106,11 @@ func _on_timer_time_out() -> void:
 
 func game_over_toggle():
 	game_over.emit()
+
+func judge_call():
+	judge_in.emit(approved)
+
+func _on_finish_clicked() -> void:
+	timer.timer.stop()
+	approved = evaluate(dessert.stats)
+	animation_player.play("judge in")
