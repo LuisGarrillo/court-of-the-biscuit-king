@@ -17,8 +17,6 @@ scale = Vector2(6, 6)
 [node name="GameOver" parent="." instance=ExtResource("3_sugp2")]
 scale = Vector2(6, 6)
 
-[connection signal="game_over_judge" from="Judge" to="." method="_on_judge_game_over_judge"]
-[connection signal="next_round" from="Judge" to="." method="_on_judge_next_round"]
 [connection signal="game_over" from="DressUp" to="." method="_on_dress_up_game_over"]
 [connection signal="judge_in" from="DressUp" to="." method="_on_dress_up_judge_in"]
 [connection signal="retry_sig" from="GameOver" to="." method="start_round"]
