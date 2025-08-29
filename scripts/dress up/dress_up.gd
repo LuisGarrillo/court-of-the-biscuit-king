@@ -49,6 +49,7 @@ var approved
 signal game_over
 signal next_round
 signal judge_in
+signal finish_game
 
 func _ready() -> void:
 	dress_panel.add_piece.connect(add_piece)
@@ -96,10 +97,15 @@ func evaluate(proposal: Dictionary):
 	return true
 
 func check_next():
+	reset()
 	if level < 4:
-		animation_player.play("next round")
+		show_riddle()
 	else:
-		animation_player.play("finish game")
+		finish_game.emit()
+		
+func advance():
+	level += 1
+	animation_player.play("next round")
 
 func _on_timer_time_out() -> void:
 	animation_player.play("time out")
@@ -109,6 +115,10 @@ func game_over_toggle():
 
 func judge_call():
 	judge_in.emit(approved)
+
+func reset():
+	dessert.reset()
+	stats_panel.reset()
 
 func _on_finish_clicked() -> void:
 	timer.timer.stop()
