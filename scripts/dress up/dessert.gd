@@ -16,3 +16,10 @@ var stats: Dictionary = {
 func add_piece(type, flavor) -> void:
 	pieces[type].texture = Data.dress_textures[flavor][type]
 	stats[type] = flavor
+
+func reset() -> void:
+	for key in pieces.keys():
+		pieces[key].texture = null
+	
+	for key in stats.keys():
+		stats[key] = null
