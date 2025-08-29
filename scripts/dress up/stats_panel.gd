@@ -10,3 +10,7 @@ class_name StatsPanel
 
 func update_stat(flavor, level):
 	stats[flavor].update_status(level)
+
+func reset():
+	for key in stats.keys():
+		stats[key].status.text = "Nothing yet"
